@@ -6,3 +6,5 @@
 ### Considerações
 
 - Este projeto simula bases de dados em memória por meio de arrays simples. Existem arrays separados para leitura e escrita, representando cada base de dados. O array de leitura é atualizado com os dados da base de escrita após alguns milissegundos, simulando uma sincronização.
+
+- A aplicação foi organizada em quatro camadas principais: presentation, application, domain e infra. Essa separação segue os princípios da Clean Architecture, isso permite um desacoplamento entre as responsabilidades da aplicação.

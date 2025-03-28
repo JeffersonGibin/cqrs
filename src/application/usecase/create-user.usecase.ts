@@ -1,15 +1,13 @@
 import { EmailVO } from "../../domain/email.vo";
 import { IUserWriterRepository } from "../../domain/types/user.repository";
 import { UserEntity } from "../../domain/user.entity";
-import { CreateUserCommand } from "./create-user.command";
+import { CreateUserCommand } from "../commands/create-user.command";
 import { OutputUserCreateDTO } from "../dto/user.dto";
 
 export class CreateUserUseCase {
     constructor(readonly repository: IUserWriterRepository) {
     }
     async execute(command: CreateUserCommand): Promise<OutputUserCreateDTO> {
-
-
         const user = await this.repository.findByEmail(command.email);
         
         if (user?.id !== undefined) {

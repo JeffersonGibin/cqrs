@@ -1,6 +1,6 @@
 import { UserReadRepository } from "../../infra/user-read.repository";
-import { GetUserByIdQuery } from "./get-user-by-id.query"
-import { GetUserUseCase } from "./get-user.usecase";
+import { GetUserByIdQuery } from "../queries/get-user-by-id.query"
+import { GetUserUseCase } from "../usecase/get-user.usecase";
 
 export const getUserController = () => {
     return async (req: any, res: any) => {

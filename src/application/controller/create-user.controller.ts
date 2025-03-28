@@ -1,7 +1,7 @@
 
 import { UserWriteRepository } from "../../infra/user-write.repository";
-import { CreateUserCommand } from "./create-user.command";
-import { CreateUserUseCase } from "./create-user.usecase";
+import { CreateUserCommand } from "../commands/create-user.command";
+import { CreateUserUseCase } from "../usecase/create-user.usecase";
 
 export const createUserController = () => {
     return async (req: any, res: any) => {
