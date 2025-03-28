@@ -1,8 +1,7 @@
-import { EmailVO } from "../../domain/email.vo";
-import { IUserWriterRepository } from "../../domain/types/user.repository";
 import { UserEntity } from "../../domain/user.entity";
-import { CreateUserCommand } from "../commands/create-user.command";
 import { OutputUserCreateDTO } from "../dto/user.dto";
+import { IUserWriterRepository } from "../../domain/types/user.repository";
+import { CreateUserCommand } from "../commands/create-user.command";
 
 export class CreateUserUseCase {
     constructor(readonly repository: IUserWriterRepository) {

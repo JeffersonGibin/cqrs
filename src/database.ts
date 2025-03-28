@@ -1,29 +1,26 @@
 import { DatabaseMemory } from "./infra/database-memory";
 
-
 const DatabaseTools = {
-    sync: () => {
-        setInterval(() => {
-            const DatabaseMemoryWrite = DatabaseMemory.getInstance().getWriteDb();
-            const DatabaseMemoryRead = DatabaseMemory.getInstance().getReadDb();
+  sync: () => {
+    const db = DatabaseMemory.getInstance(); // 👈 garantir instância única
 
-            const data: any = DatabaseMemoryWrite.shift();
-            if (data !== undefined) {
-                const dataFound = DatabaseMemoryRead.find(
-                    (user: { id: string; }) => user.id === data.id
-                )
+    setInterval(() => {
+      const writeDb = db.getWriteDb();
+      const readDb = db.getReadDb();
 
-                if (!dataFound) {
-                    DatabaseMemoryRead.push(data);
-                }
-            }
-        }, 30)
-    }
-}
+      const data = writeDb.shift();
 
-
+      if (data !== undefined) {
+        const exists = readDb.find((item: { id: string }) => item.id === data.id);
+        if (!exists) {
+          readDb.push(data); // ou use db.addReadData(data);
+        }
+      }
+    }, 30);
+  },
+};
 
 export {
-    DatabaseMemory,
-    DatabaseTools
-}
+  DatabaseMemory,
+  DatabaseTools
+};

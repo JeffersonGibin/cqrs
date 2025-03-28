@@ -10,7 +10,7 @@ export const Application = () => {
             app.use('/', router);            
 
             // Sincroniza os dados para a simulação do outro banco
-            DatabaseTools.sync();
+            // DatabaseTools.sync();
             
             app.listen(3000, () => {
                 console.log('Server running on http://localhost:3000');

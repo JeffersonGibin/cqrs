@@ -1,8 +1,7 @@
 
-import { IUserReaderRepository } from "../../domain/types/user.repository";
 import { OutputUserGetByIdDTO } from "../dto/user.dto";
 import { GetUserByIdQuery } from "../queries/get-user-by-id.query";
-
+import { IUserReaderRepository } from "../../domain/types/user.repository";
 
 export class GetUserUseCase {
     constructor(readonly repository: IUserReaderRepository) {
