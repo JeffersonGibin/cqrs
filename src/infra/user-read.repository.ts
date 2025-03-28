@@ -1,6 +1,7 @@
-import { DatabaseMemory } from "../database";
+
 import { IUserReaderRepository } from "../domain/types/user.repository";
 import { UserEntity } from "../domain/user.entity";
+import { DatabaseMemory } from "./database-memory";
 
 export class UserReadRepository implements IUserReaderRepository {
     async getByName(name: string): Promise<UserEntity | null> {

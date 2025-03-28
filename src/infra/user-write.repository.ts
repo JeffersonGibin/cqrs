@@ -1,4 +1,4 @@
-import { DatabaseMemory } from "../database";
+import { DatabaseMemory } from "./database-memory";
 import { IUserWriterRepository as IUserWriteRepository } from "../domain/types/user.repository";
 import { UserEntity } from "../domain/user.entity";
 
