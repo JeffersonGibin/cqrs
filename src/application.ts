@@ -6,11 +6,17 @@ import path from 'path';
 import { start } from 'repl';
 
 export const Application = () => {
-    const createJob = (file: string, processFatherDetached?: boolean) => {
+    const createJob = (time: number, file: string, detached?: boolean) => {
         const job = fork(file, {
-            detached: processFatherDetached
+            detached,
+            stdio: 'inherit' // Show log child process
         });
 
+        // sent event to child process
+        job.send({
+            event: 'start',
+            data: time
+        });
 
         console.log(`[${new Date().toLocaleString()}]: Job created!`);
 
@@ -20,10 +26,7 @@ export const Application = () => {
     const apps = {
         startJobs: () => {
             const fullPath = path.join(__dirname, 'job.js');
-            const jobResult = createJob(fullPath, false);
-
-          
-
+            createJob(2_000, fullPath, false);
             return apps;
         },
         run: async () => {

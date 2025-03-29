@@ -2,8 +2,9 @@
 import { OutputUserGetByIdDTO } from "../dto/user.dto";
 import { GetUserByIdQuery } from "../queries/get-user-by-id.query";
 import { IUserReaderRepository } from "../../core/repositories.types";
+import { IUseCase } from "../../../../share/shared.interface";
 
-export class GetUserUseCase {
+export class GetUserUseCase implements IUseCase<OutputUserGetByIdDTO> {
     constructor(readonly repository: IUserReaderRepository) {
     }
 

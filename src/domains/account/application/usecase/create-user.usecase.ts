@@ -2,8 +2,9 @@ import { UserEntity } from "../../core/user.entity";
 import { OutputUserCreateDTO } from "../dto/user.dto";
 import { CreateUserCommand } from "../commands/create-user.command";
 import { IUserWriterRepository } from "../../core/repositories.types";
+import { IUseCase } from "../../../../share/shared.interface";
 
-export class CreateUserUseCase {
+export class CreateUserUseCase implements IUseCase<OutputUserCreateDTO> {
     constructor(readonly repository: IUserWriterRepository) {
     }
     async execute(command: CreateUserCommand): Promise<OutputUserCreateDTO> {
