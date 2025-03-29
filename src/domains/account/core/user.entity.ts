@@ -1,3 +1,4 @@
+import { Entity } from "../../../share/entity.share";
 import { EmailVO } from "./email.vo";
 
 export interface InputUser {
@@ -6,13 +7,13 @@ export interface InputUser {
     status: "ACTIVE" | "INACTIVE" | "BLOCKED";
 }
 
-export class UserEntity {
-    id: string;
+export class UserEntity extends Entity {
     email: EmailVO;
+    
     private props: InputUser;
     constructor(props: InputUser) {
+        super();
         this.props = props;
-        this.id = crypto.randomUUID().toString();
         this.email = EmailVO.create(props.email);
     }
 

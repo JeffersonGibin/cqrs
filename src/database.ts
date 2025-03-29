@@ -1,4 +1,4 @@
-import { DatabaseMemory } from "./infra/database-memory";
+import { DatabaseMemory } from "./domains/account/infrastructure/database-memory";
 
 const DatabaseTools = {
     syncWithInstanceRead: () => {
@@ -12,7 +12,8 @@ const DatabaseTools = {
             for (const item of writeDb) {
                 const exists = readDb.find((readItem: { id: string }) => readItem.id === item.id);
                 if (!exists) {
-                    readDb.push(item);
+                    console.log("[DatabaseTools] Sync with readDb!", item.id);
+                    DatabaseMemory.getInstance().addReadData(item);
                 }
             }
         }, 30);

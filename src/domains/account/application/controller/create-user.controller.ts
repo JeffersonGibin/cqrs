@@ -1,5 +1,5 @@
 
-import { UserWriteRepository } from "../../infra/user-write.repository";
+import { UserWriteRepository } from "../../infrastructure/user-write.repository";
 import { CreateUserCommand } from "../commands/create-user.command";
 import { CreateUserUseCase } from "../usecase/create-user.usecase";
 

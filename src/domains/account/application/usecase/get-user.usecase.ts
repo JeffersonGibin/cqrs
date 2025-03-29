@@ -1,14 +1,13 @@
 
 import { OutputUserGetByIdDTO } from "../dto/user.dto";
 import { GetUserByIdQuery } from "../queries/get-user-by-id.query";
-import { IUserReaderRepository } from "../../domain/types/user.repository";
+import { IUserReaderRepository } from "../../core/repositories.types";
 
 export class GetUserUseCase {
     constructor(readonly repository: IUserReaderRepository) {
     }
 
     async execute(query: GetUserByIdQuery): Promise<OutputUserGetByIdDTO> {
-        console.log(query)
         const user = await this.repository.get(query.userId);
 
         if(!user) {

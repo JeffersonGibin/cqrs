@@ -1,7 +1,7 @@
-import { UserEntity } from "../../domain/user.entity";
+import { UserEntity } from "../../core/user.entity";
 import { OutputUserCreateDTO } from "../dto/user.dto";
-import { IUserWriterRepository } from "../../domain/types/user.repository";
 import { CreateUserCommand } from "../commands/create-user.command";
+import { IUserWriterRepository } from "../../core/repositories.types";
 
 export class CreateUserUseCase {
     constructor(readonly repository: IUserWriterRepository) {
@@ -9,7 +9,7 @@ export class CreateUserUseCase {
     async execute(command: CreateUserCommand): Promise<OutputUserCreateDTO> {
         const user = await this.repository.findByEmail(command.email);
         
-        if (user?.id !== undefined) {
+        if (user?.getId() !== undefined) {
             return {
                 action: "USER_ALREADY_EXISTS",
                 data: {

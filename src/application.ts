@@ -1,5 +1,5 @@
 import express from 'express';
-import router from './presentation/routes';
+import router from './domains/account/presentation/http/routes';
 import { DatabaseTools } from './database';
 
 export const Application = () => {

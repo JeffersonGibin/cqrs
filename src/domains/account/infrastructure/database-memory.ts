@@ -25,11 +25,12 @@ export class DatabaseMemory {
   }
 
   addWriteData(data: any): void {
+    console.log("[DatabaseMemory] Data saved on writeDb!", data.id);
     writeDb.push(data);
-    console.log(writeDb)
   }
 
   addReadData(data: any): void {
+    console.log("[DatabaseMemory] Data saved on readDb!", data.id);
     readDb.push(data);
   }
 }

@@ -1,4 +1,4 @@
-import { UserReadRepository } from "../../infra/user-read.repository";
+import { UserReadRepository } from "../../infrastructure/user-read.repository";
 import { GetUserByIdQuery } from "../queries/get-user-by-id.query"
 import { GetUserUseCase } from "../usecase/get-user.usecase";
 

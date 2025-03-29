@@ -1,21 +1,32 @@
 import { DatabaseMemory } from "./database-memory";
-import { IUserWriterRepository as IUserWriteRepository } from "../domain/types/user.repository";
-import { UserEntity } from "../domain/user.entity";
+import { IUserWriterRepository as IUserWriteRepository } from "../core/repositories.types";
+import { UserEntity } from "../core/user.entity";
+import { IRepository } from "../../../share/shared.interface";
 
 
 export class UserWriteRepository implements IUserWriteRepository {
+    get(data: UserEntity): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+    delete(data: UserEntity): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+    update(data: UserEntity): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+
     findByEmail(email: string): Promise<UserEntity | null> {
         const DatabaseMemoryWrite = DatabaseMemory.getInstance().getWriteDb();
-        
+
         const user = DatabaseMemoryWrite.find((user: { email: string; }) => {
-            if(!user) {
+            if (!user) {
                 return false
             }
 
-            return  user.email === email;
+            return user.email === email;
         });
 
-       
+
         if (!user) {
             return new Promise((resolve, reject) => {
                 resolve(null);
@@ -31,12 +42,12 @@ export class UserWriteRepository implements IUserWriteRepository {
         });
     }
     async save(user: UserEntity): Promise<void> {
-        
+
         DatabaseMemory.getInstance().addWriteData({
             id: user.getId(),
             name: user.getName(),
             email: user.getEmail(),
-            status: user.getStatus()  
+            status: user.getStatus()
         });
     }
 }

@@ -1,8 +1,8 @@
 
-import { IUserReaderRepository } from "../domain/types/user.repository";
-import { UserEntity } from "../domain/user.entity";
-import { DatabaseMemory } from "./database-memory";
 
+import { IUserReaderRepository } from "../core/repositories.types";
+import { UserEntity } from "../core/user.entity";
+import { DatabaseMemory } from "./database-memory";
 export class UserReadRepository implements IUserReaderRepository {
     async getByName(name: string): Promise<UserEntity | null> {
         const DatabaseMemoryRead = DatabaseMemory.getInstance().getReadDb();
